@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "WhatsApp Notification Sound Changer",
+  "version": "1.0",
+  "description": "Set custom notification sounds for WhatsApp Web!",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icons/default-icon.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "js": ["scripts/notification-injector.js"],
+      "matches": [
+        "https://web.whatsapp.com/*"
+      ]
+    }
+  ]
+}

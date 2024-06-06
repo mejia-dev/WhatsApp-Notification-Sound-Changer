@@ -8,9 +8,18 @@ audioFileUpload.addEventListener("change", handleAudioUpload);
 
 async function handleAudioUpload() {
   try {
-    chrome.storage.local.set({ uploadedAudio: audioFileUpload.files[0] });
-    message.innerText = "Successfully uploaded file";
-    loadCurrentAudio();
+    const file = audioFileUpload.files[0];
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const audioDataURL = e.target.result;
+      chrome.storage.local.set({ uploadedAudio: audioDataURL },
+        function () {
+          message.innerText = "Successfully uploaded file";
+          loadCurrentAudio();
+        }
+      );
+    };
+    reader.readAsDataURL(file);
   }
   catch (e) {
     message.innerText = e.message;
@@ -18,13 +27,15 @@ async function handleAudioUpload() {
 }
 
 async function loadCurrentAudio() {
-  console.log(await chrome.storage.local.get(["uploadedAudio"]));
-  const audioFile = await chrome.runtime.getURL(chrome.storage.local.get(["uploadedAudio"]));
-  
-    const audioSource = document.createElement("source");
-    audioSource.setAttribute("src", audioURL);
-    audioElement.appendChild(audioSource);
-  
-
+  chrome.storage.local.get(["uploadedAudio"], function (result) {
+    if (result.uploadedAudio) {
+      const audioSource = document.createElement("source");
+      audioSource.setAttribute("src", result.uploadedAudio);
+      audioElement.innerHTML = "";
+      audioElement.appendChild(audioSource);
+      audioElement.load();
+    }
+  });
 }
+
 loadCurrentAudio();

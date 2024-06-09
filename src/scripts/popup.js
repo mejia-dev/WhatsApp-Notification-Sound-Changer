@@ -34,8 +34,20 @@ async function loadCurrentAudio() {
       audioElement.innerHTML = "";
       audioElement.appendChild(audioSource);
       audioElement.load();
+      generateDeleteButton();
     }
   });
+}
+
+function generateDeleteButton() {
+  const delButton = document.createElement("button");
+  delButton.innerText = "Remove custom sound";
+  delButton.addEventListener("click", doDelete);
+  audioElement.after(delButton);
+}
+
+function doDelete() {
+  
 }
 
 loadCurrentAudio();

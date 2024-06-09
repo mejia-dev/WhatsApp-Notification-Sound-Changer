@@ -14,7 +14,7 @@ async function handleAudioUpload() {
       const audioDataURL = e.target.result;
       chrome.storage.local.set({ uploadedAudio: audioDataURL },
         function () {
-          message.innerText = "Successfully uploaded file";
+          message.innerText = "Successfully uploaded file. Please reload the page to activate the custom sound.";
           loadCurrentAudio();
         }
       );
@@ -47,7 +47,8 @@ function generateDeleteButton() {
 }
 
 function doDelete() {
-  
+  chrome.storage.local.clear();
+  message.innerText = "Custom sound removed. Please refresh the page.";
 }
 
 loadCurrentAudio();

@@ -3,19 +3,24 @@
 
 <head>
   <title>WhatsApp Notification Sound Changer</title>
+  <link rel="stylesheet" href="popup.css">
 </head>
 
 <body>
-  <h3>WhatsApp Notification Sound Changer</h3>
+  <div id="titleBar">
+    <h1>WhatsApp Notification Sound Changer</h1>
+  </div>
+  
   <p>Play current custom sound:
     <audio controls id="audioElement">
       Your browser does not support the audio tag.
     </audio>
   </p>
-  <p>Upload new custom sound:
+  <p>
+    <label for="audioFileUpload">Upload new custom sound</label>
     <input type="file" accept="audio/*" id="audioFileUpload"/>
   </p>
-  <span id="message"></span>
+  <p><span id="message"></span></p>
   <script src="scripts/popup.js"></script>
 </body>
 

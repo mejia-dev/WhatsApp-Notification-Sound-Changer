@@ -14,7 +14,7 @@ async function handleAudioUpload() {
       const audioDataURL = e.target.result;
       chrome.storage.local.set({ uploadedAudio: audioDataURL },
         function () {
-          message.innerText = "Successfully uploaded file. Please reload the page to activate the custom sound.";
+          message.innerText = "Successfully uploaded file. Please refresh the page to activate the custom sound.";
           loadCurrentAudio();
         }
       );
@@ -40,15 +40,21 @@ async function loadCurrentAudio() {
 }
 
 function generateDeleteButton() {
+  if (document.getElementById("deleteSoundButton")) document.getElementById("deleteSoundButton").remove();
   const delButton = document.createElement("button");
   delButton.innerText = "Remove custom sound";
+  delButton.id = "deleteSoundButton";
+  delButton.classList.add("deleteSoundButton");
   delButton.addEventListener("click", doDelete);
   audioElement.after(delButton);
 }
 
 function doDelete() {
   chrome.storage.local.clear();
-  message.innerText = "Custom sound removed. Please refresh the page.";
+  audioElement.innerHTML = "";
+  audioElement.load();
+  document.getElementById("deleteSoundButton").remove();
+  message.innerText = "Custom sound removed. Please refresh the page to complete the removal.";
 }
 
 loadCurrentAudio();

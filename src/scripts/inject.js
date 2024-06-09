@@ -1,5 +1,4 @@
-(function () {
-  const storage = chrome.storage.local;
+document.addEventListener('WACustomNotificationSound', (e) => {
   const OriginalNotification = Notification;
   const OriginalAudio = Audio;
 
@@ -18,13 +17,7 @@
   function changeAudioConstructor() {
     function CustomAudio(src) {
       const audio = new OriginalAudio(src);
-      // set to a temporary sound for now, can be updated later to use user-specified sound
-      chrome.storage.local.get(["uploadedAudio"], function (result) {
-        if (result.uploadedAudio) {
-          audio.src = result.uploadedAudio;
-        }
-      });
-      // audio.src = "https://cdn.freesound.org/previews/352/352653_4019029-lq.mp3";
+      audio.src = e.detail;
       return audio;
     }
     CustomAudio.prototype = OriginalAudio.prototype;
@@ -34,8 +27,5 @@
   CustomNotification.prototype = OriginalNotification.prototype;
   CustomNotification.requestPermission = OriginalNotification.requestPermission.bind(OriginalNotification);
   CustomNotification.permission = OriginalNotification.permission;
-
   window.Notification = CustomNotification;
-
-  console.log("WhatsApp Notification Sound Changer loaded!");
-})();
+});

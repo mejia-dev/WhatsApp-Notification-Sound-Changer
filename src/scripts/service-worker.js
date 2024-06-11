@@ -1,5 +1,5 @@
 chrome.runtime.onMessage.addListener(async (message) => {
-  if (message.title === "WAW-Alert-Triggered") {
+  if (message.title === "WANSC-Load-Player") {
     if (await chrome.offscreen.hasDocument()) {
       chrome.offscreen.closeDocument();
     }
@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener(async (message) => {
     });
 
     chrome.runtime.sendMessage({
-      title: "WAW-Play-Sound",
+      title: "WANSC-Play-Sound",
       audio: message.audio
     });
   }

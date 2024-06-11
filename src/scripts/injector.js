@@ -7,7 +7,10 @@
     this.remove();
     chrome.storage.local.get(["uploadedAudio"], function (result) {
       if (result.uploadedAudio) {
-        document.dispatchEvent(new CustomEvent('WACustomNotificationSound', { detail: result.uploadedAudio }));
+        document.dispatchEvent(new CustomEvent("WANSC-Initialize", { detail: result.uploadedAudio }));
+        document.addEventListener("WANSC-Notification-Triggered", () => {
+          chrome.runtime.sendMessage({ title: "WANSC-Load-Player", audio: result.uploadedAudio });
+        });
       }
     });
   }

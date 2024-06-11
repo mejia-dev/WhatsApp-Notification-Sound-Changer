@@ -17,13 +17,17 @@
     "128": "icons/icon-128.png"
   },
   "permissions": [
-    "storage"
+    "storage","tabs","offscreen"
   ],
+  "background": {
+    "service_worker": "scripts/service-worker.js"
+  },
   "content_scripts": [
     {
       "js": ["scripts/injector.js"],
       "matches": [
-        "https://web.whatsapp.com/*"
+        "https://web.whatsapp.com/*",
+        "http://localhost:5173/*"
       ]
     }
   ],
@@ -31,7 +35,8 @@
     {
       "resources": ["scripts/inject.js"],
       "matches": [
-        "https://web.whatsapp.com/*"
+        "https://web.whatsapp.com/*",
+        "http://localhost:5173/*"
       ]
     }
   ]

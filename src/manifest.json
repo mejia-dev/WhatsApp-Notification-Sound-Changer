@@ -2,9 +2,9 @@
   "manifest_version": 3,
   "name": "WhatsApp Notification Sound Changer",
   "version": "1.0",
-  "description": "Set custom notification sounds for WhatsApp Web.",
+  "description": "Set a custom notification sound for WhatsApp!",
   "author": {
-    "email": "aaron@mejia.dev"
+    "email": "extensions@mejia.dev"
   },
   "action": {
     "default_popup": "popup.html",

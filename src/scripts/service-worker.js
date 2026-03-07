@@ -22,6 +22,9 @@ chrome.runtime.onMessage.addListener(async (message) => {
       audio: message.audio
     });
   }
+  if (message.title === "WANSC-Stop-Sound") {
+    chrome.runtime.sendMessage({ title: "WANSC-Stop-Sound" });
+  }
   if (message.title === "WANSC-Audio-Ended") {
     chrome.tabs.query({url: "https://web.whatsapp.com/*"}, function (tabs) {
       if (tabs.length > 0) {

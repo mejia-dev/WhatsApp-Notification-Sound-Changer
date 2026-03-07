@@ -3,6 +3,11 @@ const storage = chrome.storage.local;
 const audioElement = document.getElementById("audioElement");
 const audioFileUpload = document.getElementById("audioFileUpload");
 const message = document.getElementById("message");
+const stopSoundButton = document.getElementById("stopSoundButton");
+
+stopSoundButton.addEventListener("click", () => {
+  chrome.runtime.sendMessage({ title: "WANSC-Stop-Sound" });
+});
 
 audioFileUpload.addEventListener("change", handleAudioUpload);
 

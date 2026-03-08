@@ -60,35 +60,65 @@ h1 {
   font-size: medium;
 }
 
+/*////////////// Color Variables //////////////*/
+
+:root {
+  --color-bg: white;
+  --color-text: black;
+  --color-border: #e5e5e5;
+  --color-btn-hover-bg: #f9f8f8;
+  --color-upload-hover-bg: #c6f4c7;
+  --color-upload-hover-text: #1f6846;
+  --color-titlebar-bg: #f7f5f3;
+  --color-scheme: light;
+  --color-footnote: #888;
+  --color-footnote-link: rgb(27, 135, 85);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #161717;
+    --color-text: rgb(250, 250, 250);
+    --color-border: #434444;
+    --color-btn-hover-bg: #242626;
+    --color-upload-hover-bg: #11432f;
+    --color-upload-hover-text: #cff3ca;
+    --color-titlebar-bg: #1d1f1f;
+    --color-scheme: dark;
+    --color-footnote: #777;
+    --color-footnote-link: rgb(33, 192, 99);
+  }
+}
+
 /*////////////// Color Styles //////////////*/
 
 body {
-  background-color: white;
-  color: black;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 #buttonsContainer {
-  border: 1px solid #e5e5e5;
+  border: 1px solid var(--color-border);
 }
 
 button,
 label[for="audioFileUpload"] {
-  background-color: white;
-  color: black;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 button:hover {
-  background-color: #f9f8f8;
+  background-color: var(--color-btn-hover-bg);
 }
 
 label[for="audioFileUpload"]:hover {
-  background-color: #c6f4c7;
-  color: #1f6846;
+  background-color: var(--color-upload-hover-bg);
+  color: var(--color-upload-hover-text);
 }
 
 #titleBar {
-  background-color: #f7f5f3;
-  border-bottom: 1px solid #e5e5e5;
+  background-color: var(--color-titlebar-bg);
+  border-bottom: 1px solid var(--color-border);
 }
 
 #audioFileUpload {
@@ -96,65 +126,18 @@ label[for="audioFileUpload"]:hover {
 }
 
 audio {
-  color-scheme: light;
+  color-scheme: var(--color-scheme);
 }
 
 hr {
-  border-color: #434444;
+  border-color: var(--color-border);
 }
 
 hr+p {
   font-size: 0.75rem;
-  color: #888;
+  color: var(--color-footnote);
 }
 
 hr+p a {
-  color: rgb(27, 135, 85);
-}
-
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #161717;
-    color: rgb(250, 250, 250);
-  }
-
-  #buttonsContainer {
-    border: 1px solid #434444;
-  }
-
-  button,
-  label[for="audioFileUpload"] {
-    background-color: #161717;
-    color: rgb(250, 250, 250);
-  }
-
-  button:hover {
-    background-color: #242626;
-  }
-
-  label[for="audioFileUpload"]:hover {
-    background-color: #11432f;
-    color: #cff3ca;
-  }
-
-  #titleBar {
-    background-color: #1d1f1f;
-    border-bottom: 1px solid #434444;
-  }
-
-  audio {
-    color-scheme: dark;
-  }
-
-  hr {
-    border-color: #434444;
-  }
-
-  hr+p a {
-    color: rgb(33, 192, 99);
-  }
-
-  hr+p {
-    color: #777;
-  }
+  color: var(--color-footnote-link);
 }

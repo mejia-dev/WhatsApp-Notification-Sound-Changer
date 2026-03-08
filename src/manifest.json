@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "WhatsApp Notification Sound Changer",
-  "version": "1.0",
+  "version": "2.0",
   "description": "Set a custom notification sound for WhatsApp!",
   "author": {
     "email": "extensions@mejia.dev"

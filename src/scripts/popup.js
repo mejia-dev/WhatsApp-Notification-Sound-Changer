@@ -6,6 +6,10 @@ const message = document.getElementById("message");
 const stopSoundButton = document.getElementById("stopSoundButton");
 
 stopSoundButton.addEventListener("click", () => {
+  // Stop sample audio player
+  audioElement.pause();
+  audioElement.currentTime = 0;
+  // Send runtime message to stop injected audio
   chrome.runtime.sendMessage({ title: "WANSC-Stop-Sound" });
 });
 
@@ -40,6 +44,7 @@ async function loadCurrentAudio() {
       audioElement.appendChild(audioSource);
       audioElement.load();
       generateDeleteButton();
+      stopSoundButton.style.display = "";
     }
   });
 }
@@ -47,11 +52,12 @@ async function loadCurrentAudio() {
 function generateDeleteButton() {
   if (document.getElementById("deleteSoundButton")) document.getElementById("deleteSoundButton").remove();
   const delButton = document.createElement("button");
-  delButton.innerText = "Remove custom sound";
+  delButton.innerHTML = `<i class="bi bi-trash"></i> Remove custom sound`;
   delButton.id = "deleteSoundButton";
   delButton.classList.add("deleteSoundButton");
   delButton.addEventListener("click", doDelete);
-  audioElement.after(delButton);
+  const buttonsContainer = document.getElementById("buttonsContainer");
+  buttonsContainer.prepend(delButton);
 }
 
 function doDelete() {
@@ -59,6 +65,7 @@ function doDelete() {
   audioElement.innerHTML = "";
   audioElement.load();
   document.getElementById("deleteSoundButton").remove();
+  stopSoundButton.style.display = "none";
   message.innerText = "Custom sound removed. Please refresh the page to complete the removal.";
 }
 

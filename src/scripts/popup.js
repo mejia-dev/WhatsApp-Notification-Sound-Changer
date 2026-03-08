@@ -47,11 +47,12 @@ async function loadCurrentAudio() {
 function generateDeleteButton() {
   if (document.getElementById("deleteSoundButton")) document.getElementById("deleteSoundButton").remove();
   const delButton = document.createElement("button");
-  delButton.innerText = "Remove custom sound";
+  delButton.innerHTML = `<i class="bi bi-trash"></i> Remove custom sound`;
   delButton.id = "deleteSoundButton";
   delButton.classList.add("deleteSoundButton");
   delButton.addEventListener("click", doDelete);
-  audioElement.after(delButton);
+  const buttonsContainer = document.getElementById("buttonsContainer");
+  buttonsContainer.prepend(delButton);
 }
 
 function doDelete() {

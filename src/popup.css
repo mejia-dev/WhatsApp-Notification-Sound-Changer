@@ -68,8 +68,8 @@ body {
 }
 
 #buttonsContainer {
-    border: 1px solid #e5e5e5;
-  }
+  border: 1px solid #e5e5e5;
+}
 
 button,
 label[for="audioFileUpload"] {
@@ -97,6 +97,19 @@ label[for="audioFileUpload"]:hover {
 
 audio {
   color-scheme: light;
+}
+
+hr {
+  border-color: #434444;
+}
+
+hr+p {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+hr+p a {
+  color: rgb(27, 135, 85);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -131,5 +144,17 @@ audio {
 
   audio {
     color-scheme: dark;
+  }
+
+  hr {
+    border-color: #434444;
+  }
+
+  hr+p a {
+    color: rgb(33, 192, 99);
+  }
+
+  hr+p {
+    color: #777;
   }
 }

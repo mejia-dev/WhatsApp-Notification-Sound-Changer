@@ -2,7 +2,7 @@
 <p align="center">Set a custom notification sound for WhatsApp!</a></p>
 
 <p align="center">
-<a href="https://chromewebstore.google.com/detail/lofnpggmmbpmapdagkdnfedmhgackcll"><img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png" alt="WhatsApp Notification Sound Changer on the Chrome Web Store" /></a>
+<a href="https://chromewebstore.google.com/detail/lofnpggmmbpmapdagkdnfedmhgackcll"><img src="./assets/badges/chrome-web-store.png" alt="Get WhatsApp Notification Sound Changer on the Chrome Web Store" /></a>
 </p>
 
 <hr /><br />

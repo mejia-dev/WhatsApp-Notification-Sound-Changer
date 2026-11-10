@@ -9,8 +9,8 @@ stopSoundButton.addEventListener("click", () => {
   // Stop sample audio player
   audioElement.pause();
   audioElement.currentTime = 0;
-  // Send runtime message to stop injected audio
-  chrome.runtime.sendMessage({ title: "WANSC-Stop-Sound" });
+  // Signal WhatsApp tabs to stop the custom sound
+  chrome.storage.local.set({ stopSoundAt: Date.now() });
 });
 
 uploadButton.addEventListener("click", async () => {

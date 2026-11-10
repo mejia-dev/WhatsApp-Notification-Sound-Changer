@@ -1,15 +1,16 @@
-chrome.runtime.onMessage.addListener(async (message) => {
-  if (message.title === "WANSC-Load-Player") {
+let loadPlayerQueue = Promise.resolve();
+
+async function loadPlayer(audio) {
+  try {
     if (await chrome.offscreen.hasDocument()) {
-      chrome.offscreen.closeDocument();
+      await chrome.offscreen.closeDocument();
     }
 
-    chrome.tabs.query({url: "https://web.whatsapp.com/*"}, function (tabs) {
-      if (tabs.length > 0) {
-        const whatsApp = tabs[0];
-        chrome.tabs.update(whatsApp.id, { muted: true });
-      }
-    });
+    const tabs = await chrome.tabs.query({url: "https://web.whatsapp.com/*"});
+    if (tabs.length > 0) {
+      const whatsApp = tabs[0];
+      await chrome.tabs.update(whatsApp.id, { muted: true });
+    }
 
     await chrome.offscreen.createDocument({
       url: "audio_player/audio_player.html",
@@ -19,8 +20,22 @@ chrome.runtime.onMessage.addListener(async (message) => {
 
     await chrome.runtime.sendMessage({
       title: "WANSC-Play-Sound",
-      audio: message.audio
+      audio: audio
     });
+  } catch (error) {
+    console.error("Failed to play custom sound:", error);
+    const tabs = await chrome.tabs.query({url: "https://web.whatsapp.com/*"});
+    if (tabs.length > 0) {
+      await chrome.tabs.update(tabs[0].id, { muted: false });
+    }
+  }
+}
+
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.title === "WANSC-Load-Player") {
+    loadPlayerQueue = loadPlayerQueue
+      .then(() => loadPlayer(message.audio))
+      .catch((error) => console.error(error));
   }
   if (message.title === "WANSC-Stop-Sound") {
     chrome.runtime.sendMessage({ title: "WANSC-Stop-Sound" });

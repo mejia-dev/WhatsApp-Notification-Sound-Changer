@@ -2,7 +2,7 @@
 <p align="center">Set a custom notification sound for WhatsApp!</a></p>
 
 <p align="center">
-<a href="https://chromewebstore.google.com/detail/lofnpggmmbpmapdagkdnfedmhgackcll"><img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/UV4C4ybeBTsZt43U4xis.png" alt="WhatsApp Notification Sound Changer on the Chrome Web Store" /></a>
+<a href="https://chromewebstore.google.com/detail/lofnpggmmbpmapdagkdnfedmhgackcll"><img src="./assets/badges/chrome-web-store.png" alt="Get WhatsApp Notification Sound Changer on the Chrome Web Store" /></a>
 </p>
 
 <hr /><br />
@@ -31,6 +31,15 @@ This project was born out of necessity. The default WhatsApp web sound is too si
 - In the file picker that appears, select the `src` folder of the cloned repository.
 
 
+## Testing
+
+The `tests/` folder holds automated tests for the extension. Requires Node.js 22+:
+
+```
+npm install
+npm test
+```
+
 ## More Information
 
 View the [Changelog](CHANGELOG.md)
@@ -39,5 +48,5 @@ Report issues in the [Issue Tracker](https://github.com/mejia-dev/WhatsApp-Notif
 
 Disclaimer: This extension is not in any way affiliated with, associated with, authorized, or endorsed by WhatsApp. WhatsApp is a registered trademark of WhatsApp LLC.
 
-Copyright (C) 2024 Aaron Mejia<br/>
+Copyright (C) 2024-2026 Aaron Mejia<br/>
 Open Source under the [GPLv3 License](LICENSE.txt).

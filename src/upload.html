@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Upload custom sound</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+  <div id="titleBar">
+    <h1>Upload custom sound</h1>
+  </div>
+  <label class="dropzone" id="dropzone" for="audioFileUpload">
+    <i class="bi bi-upload"></i>
+    <span>Choose or drop an audio file</span>
+  </label>
+  <input type="file" accept="audio/*" id="audioFileUpload" />
+  <p id="message"></p>
+  <script src="scripts/upload.js"></script>
+</body>
+
+</html>

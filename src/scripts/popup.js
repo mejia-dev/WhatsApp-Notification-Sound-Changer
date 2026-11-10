@@ -1,7 +1,7 @@
 const storage = chrome.storage.local;
 
 const audioElement = document.getElementById("audioElement");
-const audioFileUpload = document.getElementById("audioFileUpload");
+const uploadButton = document.getElementById("uploadButton");
 const message = document.getElementById("message");
 const stopSoundButton = document.getElementById("stopSoundButton");
 
@@ -13,27 +13,10 @@ stopSoundButton.addEventListener("click", () => {
   chrome.runtime.sendMessage({ title: "WANSC-Stop-Sound" });
 });
 
-audioFileUpload.addEventListener("change", handleAudioUpload);
-
-async function handleAudioUpload() {
-  try {
-    const file = audioFileUpload.files[0];
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const audioDataURL = e.target.result;
-      chrome.storage.local.set({ uploadedAudio: audioDataURL },
-        function () {
-          message.innerText = "Successfully uploaded file. Please refresh the page to activate the custom sound.";
-          loadCurrentAudio();
-        }
-      );
-    };
-    reader.readAsDataURL(file);
-  }
-  catch (e) {
-    message.innerText = e.message;
-  }
-}
+uploadButton.addEventListener("click", async () => {
+  await chrome.windows.create({ url: "upload.html", type: "popup", width: 340, height: 260 });
+  window.close();
+});
 
 async function loadCurrentAudio() {
   chrome.storage.local.get(["uploadedAudio"], function (result) {

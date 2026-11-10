@@ -1,5 +1,5 @@
 # 2.1 - 2026-11-10
-Updates from user feedback.
+Reliability updates from user feedback.
 - File uploads now happen in a new popup window and show file errors. Fixes popup closing when file picker is opened.
 - Fix issue that could sometimes leave WhatsApp muted.
 - Make notification sound targeting more reliable.

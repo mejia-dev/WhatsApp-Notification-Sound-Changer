@@ -1,0 +1,13 @@
+{
+  "name": "whatsapp-notification-sound-changer",
+  "private": true,
+  "description": "Just for automated testing.",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "jsdom": "^31.0.0",
+    "vitest": "^5.1.0"
+  }
+}
